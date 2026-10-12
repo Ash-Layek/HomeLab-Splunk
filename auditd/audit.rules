@@ -1,0 +1,28 @@
+## First rule - delete all
+-D
+
+## Increase the buffers to survive stress events.
+## Make this bigger for busy systems
+-b 8192
+
+## This determine how long to wait in burst of events
+--backlog_wait_time 60000
+
+## Set failure mode to syslog
+-f 1
+
+# Watch local account management files for write/attribute changes
+
+-w /etc/passwd -p wa -k identity_changes
+
+-w /etc/shadow -p wa -k identity_changes
+
+-w /etc/group  -p wa -k identity_changes
+
+
+
+# Watch user creation and modification commands
+
+-w /usr/sbin/useradd -p x -k user_creation
+
+-w /usr/sbin/usermod -p x -k user_creation
