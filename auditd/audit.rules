@@ -26,3 +26,5 @@
 -w /usr/sbin/useradd -p x -k user_creation
 
 -w /usr/sbin/usermod -p x -k user_creation
+-w /etc/systemd/system -p wa -k systemd_mod
+-a always,exit -F arch=b64 -S execve -k allcmds
